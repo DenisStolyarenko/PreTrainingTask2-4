@@ -1,0 +1,8 @@
+1 bouquet = Rose Yellow,Rose Yellow,Rose Yellow,
+Cost of bouquet = 450.0 KZT
+1 bouquet = Peony Lilac,Peony Lilac,Peony Lilac,
+Cost of bouquet = 600.0 KZT
+1 bouquet = Lily white,Lily white,Lily white,
+Cost of bouquet = 690.0 KZT
+
+

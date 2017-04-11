@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Scope>
+    <Flower id="1">
+        <name>Rose</name>
+        <color>Yellow</color>
+        <length>70</length>
+        <price>150</price>        
+    </Flower>
+    
+    <Flower id="2">
+        <name>Peony</name>
+        <color>White</color>
+        <length>70</length>
+        <price>200</price>        
+    </Flower>
+	
+	<Flower id="3">
+       <name>Rose</name>
+        <color>Red</color>
+        <length>70</length>
+        <price>150</price>          
+    </Flower>
+	
+	<Flower id="4">
+        <name>Lily</name>
+        <color>White</color>
+        <length>65</length>
+        <price>230</price>          
+    </Flower>
+	
+	<Flower id="5">
+        <name>Rose</name>
+        <color>White</color>
+        <length>70</length>
+        <price>150</price>         
+    </Flower>
+	
+	<Flower id="6">
+        <name>Peony</name>
+        <color>White</color>
+        <length>70</length>
+        <price>200</price>       
+    </Flower>
+	
+	<Flower id="7">
+       <name>Peony</name>
+        <color>White</color>
+        <length>70</length>
+        <price>200</price>          
+    </Flower>
+
+	<Flower id="8">
+        <name>Lily</name>
+        <color>Yellow</color>
+        <length>65</length>
+        <price>230</price>            
+    </Flower>
+	
+	<Flower id="9">
+        <name>Lily</name>
+        <color>White</color>
+        <length>65</length>
+        <price>230</price>           
+    </Flower>
+	
+	<Flower id="10">
+        <name>Lily</name>
+        <color>Yellow</color>
+        <length>65</length>
+        <price>230</price>        
+    </Flower>
+	
+</Scope>
