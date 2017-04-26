@@ -15,11 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ReadFromXML extends ReaderData{
-
-    public Map<Integer, String[]> readFile(String fileXMLPath) throws ParserConfigurationException, IOException, SAXException {
+    @Override
+    public Map<Integer, String[]> readFile(String Path) throws ParserConfigurationException, IOException, SAXException {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-        Document document = documentBuilder.parse(new File(fileXMLPath));
+        Document document = documentBuilder.parse(new File(Path));
         document.normalizeDocument();
         Element root = document.getDocumentElement();
         NodeList flowers = root.getElementsByTagName("Flower");
@@ -38,6 +38,5 @@ public class ReadFromXML extends ReaderData{
         }
         return flowerValueMap;
     }
-
 
 }
