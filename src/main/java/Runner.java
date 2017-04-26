@@ -14,14 +14,15 @@ public class Runner {
     public static String currency = "KZT";
 
     public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
-        String filePath = "D:\\sandbox\\PreTrainingTasks\\task4\\src\\main\\resources\\Flowers.txt";
-        String fileOutput = "D:\\sandbox\\PreTrainingTasks\\task4\\src\\main\\resources\\Bouquets.txt";
-        String fileXMLPath = "D:\\sandbox\\PreTrainingTasks\\task4\\src\\main\\resources\\flowersXML.xml";
+        Runner app = new Runner();
+        String baseDir = new File(".").getCanonicalPath();
+
         String fileDBPath = "jdbc:h2:~/test";
 
-        Map<Integer,String[]> flowerMap = ReadFromFile.readFile(filePath);
-        Map<Integer,String[]> flowerMap2 = new ReadFromXML().readFile(fileXMLPath);
-        Map<Integer,String[]> flowerMap3 = new ReadFromDB().readFile(fileDBPath);
+        String filePath = baseDir + "\\src\\main\\resources\\Flowers.txt";
+        String fileXMLPath = baseDir + "\\src\\main\\resources\\flowersXML.xml";
+        String fileOutput = baseDir + "\\src\\main\\resources\\Bouquets.txt";
+
         Map<Integer,String[]> flowerMapping = new HashMap<>();
         System.out.println("Input source of data:");
         System.out.println("1 - File(default), 2 - XML, 3 - DB");
@@ -29,56 +30,23 @@ public class Runner {
         String numb = reader.readLine();
 
         if (numb.equals("1")) {
-            flowerMapping = flowerMap;
+            flowerMapping = ReadFromFile.readFile(filePath);
         } else if (numb.equals("2")) {
-            flowerMapping = flowerMap2;
+            flowerMapping = new ReadFromXML().readFile(fileXMLPath);
         } else if (numb.equals("3")) {
-            flowerMapping = flowerMap3;
+            flowerMapping = new ReadFromDB().readFile(fileDBPath);
         } else {
-            flowerMapping = flowerMap;
+            flowerMapping = ReadFromFile.readFile(filePath);
         }
 //        printFlowerList(flowerMapping);
 
         List<Flower> flowerStorage = new AddToStorage().CreateStorage(flowerMapping);
         List<Bouquet> listBouquets = new ArrayList<>();
 
+        listBouquets.add(app.createBouquet(flowerStorage,"rose"));
+        listBouquets.add(app.createBouquet(flowerStorage,"peony"));
+        listBouquets.add(app.createBouquet(flowerStorage,"lily"));
 
-
-        Bouquet bouquet1 = new Bouquet();
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < flowerStorage.size(); j++){
-                if (flowerStorage.get(j).getName().toLowerCase().equals("rose")){
-                    bouquet1.gatherBouquet(flowerStorage.get(j));
-                    break;
-                }
-            }
-        }
-
-        listBouquets.add(bouquet1);
-
-        Bouquet bouquet2 = new Bouquet();
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < flowerStorage.size(); j++){
-                if (flowerStorage.get(j).getName().toLowerCase().equals("peony")){
-                    bouquet2.gatherBouquet(flowerStorage.get(j));
-                    break;
-                }
-            }
-        }
-
-        listBouquets.add(bouquet2);
-
-        Bouquet bouquet3 = new Bouquet();
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < flowerStorage.size(); j++){
-                if (flowerStorage.get(j).getName().toLowerCase().equals("lily")){
-                    bouquet3.gatherBouquet(flowerStorage.get(j));
-                    break;
-                }
-            }
-        }
-
-        listBouquets.add(bouquet3);
         int m = 1;
         String content = "";
         for (Bouquet item: listBouquets
@@ -91,6 +59,19 @@ public class Runner {
 
     }
 
+    public Bouquet createBouquet(List<Flower> flowerStorage, String name) {
+        Bouquet bouquet = new Bouquet();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < flowerStorage.size(); j++) {
+                if (flowerStorage.get(j).getName().toLowerCase().equals(name)) {
+                    bouquet.gatherBouquet(flowerStorage.get(j));
+                    break;
+                }
+            }
+        }
+
+        return bouquet;
+    }
 
     public static void printFlowerList(Map<Integer,String[]> map) {
         for (Map.Entry<Integer,String[]> s : map.entrySet()) {
